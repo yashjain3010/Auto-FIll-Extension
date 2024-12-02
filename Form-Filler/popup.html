@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- The title of the extension that appears in the browser tab -->
+    <title>Excel to Form Auto-Fill</title>
+    <style>
+        /* Styling for the body of the page */
+        body {
+            width: 400px;
+            /* Set the width of the body */
+            padding: 20px;
+            /* Add padding around the content */
+            font-family: Arial, sans-serif;
+            /* Set the font for the page */
+        }
+
+        /* Styling for the user info section */
+        .user-info {
+            background: #f5f5f5;
+            /* Light grey background for the user info */
+            padding: 15px;
+            /* Add padding inside the section */
+            margin: 10px 0;
+            /* Add margin between sections */
+            border-radius: 4px;
+            /* Rounded corners */
+        }
+
+        /* Styling for tables inside the user-info section */
+        .user-info table {
+            width: 100%;
+            /* Table takes up full width */
+            border-collapse: collapse;
+            /* Ensure no space between table borders */
+        }
+
+        /* Styling for each table cell in the user-info section */
+        .user-info td {
+            padding: 5px;
+            /* Add padding inside table cells */
+        }
+
+        /* Styling for the status message */
+        #status {
+            margin-top: 15px;
+            /* Add space above the status */
+            padding: 10px;
+            /* Add padding inside the status box */
+            background: #e8e8e8;
+            /* Light grey background */
+            border-radius: 4px;
+            /* Rounded corners */
+        }
+
+        /* Styling for the file input field */
+        #fileInput {
+            margin: 10px 0;
+            /* Add margin above and below the input */
+        }
+
+        /* Styling for buttons */
+        button {
+            padding: 8px 16px;
+            /* Set padding inside the button */
+            margin: 5px;
+            /* Add space between buttons */
+            border-radius: 4px;
+            /* Rounded corners for the button */
+            border: 1px solid #ccc;
+            /* Light grey border */
+            background: #f0f0f0;
+            /* Light background for the button */
+            cursor: pointer;
+            /* Change cursor to pointer when hovering */
+        }
+
+        /* Styling for the disabled button state */
+        button:disabled {
+            opacity: 0.5;
+            /* Make the button semi-transparent when disabled */
+            cursor: not-allowed;
+            /* Change cursor to not-allowed */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Main container for the popup content -->
+    <div class="container">
+        <!-- Title heading for the popup -->
+        <h2>Excel to Form Auto-Fill</h2>
+
+        <!-- File input for selecting an Excel file -->
+        <div>
+            <input type="file" id="fileInput" accept=".xlsx,.xls" /> <!-- Accepts only Excel files -->
+            <!-- Button to trigger form filling, initially disabled until a file is uploaded -->
+            <button id="fillFormButton" disabled>Fill Form</button>
+        </div>
+
+        <!-- Div to display the current user's info (will be populated dynamically) -->
+        <div id="currentUser"></div>
+
+        <!-- Status message to display the current state of the extension -->
+        <div id="status">Ready to load Excel file</div>
+    </div>
+
+    <!-- Include the XLSX library for parsing Excel files -->
+    <script src="lib/xlsx.full.min.js"></script>
+
+    <!-- Include the popup.js script for handling functionality -->
+    <script src="popup.js"></script>
+</body>
+
+</html>

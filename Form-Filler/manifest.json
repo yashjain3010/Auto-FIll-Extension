@@ -1,0 +1,59 @@
+{
+  // Manifest version specifying the version of the manifest file format
+  "manifest_version": 3,
+
+  // The name of the Chrome extension
+  "name": "Excel to Form Auto-Fill",
+
+  // A brief description of what the extension does
+  "description": "Automatically fill forms using data from an Excel file",
+
+  // The version of the extension
+  "version": "1.0",
+
+  // Permissions required by the extension to interact with the browser
+  "permissions": [
+    "activeTab", // Allows the extension to interact with the currently active tab
+    "scripting", // Enables the extension to execute scripts in the context of web pages
+    "tabs", // Allows the extension to interact with browser tabs
+    "storage" // Allows the extension to use the local storage API to store data
+  ],
+
+  // Defines the background script configuration
+  "background": {
+    // Service worker to handle background tasks for the extension (manifest v3)
+    "service_worker": "background.js"
+  },
+
+  // Defines the extension's popup configuration
+  "action": {
+    // Specifies the HTML file for the popup when the extension icon is clicked
+    "default_popup": "popup.html",
+
+    // Specifies the icons used for the extension at different sizes
+    "default_icon": {
+      "16": "assets/icon.png", // 16x16 icon for small size
+      "48": "assets/icon.png", // 48x48 icon for medium size
+      "128": "assets/icon.png" // 128x128 icon for large size
+    }
+  },
+
+  // Specifies content scripts that will be injected into matching web pages
+  "content_scripts": [
+    {
+      // Matches all URLs, so the content script will be injected into any page
+      "matches": ["<all_urls>"],
+
+      // Specifies the JavaScript file to inject into the matched pages
+      "js": ["content.js"],
+
+      // Defines when to run the content script (after the page's document is fully loaded)
+      "run_at": "document_end"
+    }
+  ],
+
+  // Host permissions required to access any website's content
+  "host_permissions": [
+    "<all_urls>" // Grants the extension permission to access all URLs
+  ]
+}
